@@ -1,0 +1,15 @@
+bcrypt==3.2.0
+cffi==1.14.5
+click==7.1.2
+fastapi==0.63.0
+greenlet==1.0.0
+h11==0.12.0
+psycopg2-binary==2.8.6
+pycparser==2.20
+pydantic==1.8.1
+python-dotenv==0.16.0
+six==1.15.0
+SQLAlchemy==1.4.4
+starlette==0.13.6
+typing-extensions==3.7.4.3
+uvicorn==0.13.4

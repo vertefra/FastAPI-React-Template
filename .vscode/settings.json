@@ -1,0 +1,8 @@
+{
+	"python.pythonPath": "backend/.venv/bin/python3",
+	"python.analysis.extraPaths": ["backend/"],
+	"python.linting.mypyEnabled": true,
+	"python.linting.enabled": true,
+	"python.linting.flake8Enabled": false,
+	"python.linting.pylintEnabled": false
+}

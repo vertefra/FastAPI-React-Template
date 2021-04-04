@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    command: python3 app/main.py
+    volumes:
+      - './backend:/project/backend'
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile.dev
+    environment:
+      POSTGRES_PASSWORD: '${DB_PASSWORD}'
+      POSTGRES_USER: '${DB_USER}'
+      POSTGRES_DB: '${DB_NAME}'
+    ports:
+      - '5432:5432'
+    restart: 'always'
