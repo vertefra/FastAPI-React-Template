@@ -23,3 +23,13 @@ services:
     ports:
       - '5432:5432'
     restart: 'always'
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - './frontend:/project/frontend'
+    command: npm run dev
+    ports:
+      - '9000:9000'

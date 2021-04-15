@@ -4,6 +4,7 @@ from typing import Union
 
 from sqlalchemy import create_engine
 from sqlalchemy.engine import Engine
+from sqlalchemy.exc import OperationalError
 
 from app.config import settings
 from app.database import Base
@@ -25,7 +26,7 @@ def _db_up() -> Union[Engine, bool]:
                 settings.DB_CONNECTION_STRING,
             )
 
-        except Exception as err:
+        except OperationalError as err:
             print(err)
             print("Database still offline")
             print(f"Attempt {attemp}")
@@ -41,7 +42,7 @@ def init_db() -> None:
     engine = _db_up()
 
     if not engine:
-        sys.exit("Could not retry databse connection")
+        sys.exit("Could not retrieve databse connection")
     else:
         print("Creating tables...")
         Base.metadata.create_all(engine)

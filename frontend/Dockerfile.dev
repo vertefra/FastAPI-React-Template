@@ -1,0 +1,14 @@
+FROM node:alpine3.13
+
+WORKDIR /project/frontend
+
+COPY ./package.json ./package.json
+
+CMD npm i 
+
+COPY . .
+
+EXPOSE 9000
+
+
+

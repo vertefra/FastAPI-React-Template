@@ -4,6 +4,10 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
 	entry: './src/index.tsx',
+	output: {
+		filename: 'bundje.js',
+		path: path.resolve(__dirname, 'dist'),
+	},
 	module: {
 		rules: [
 			{
@@ -20,15 +24,21 @@ module.exports = {
 	resolve: {
 		extensions: ['.ts', '.tsx', '.js', 'json'],
 	},
-	output: {
-		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'dist'),
-	},
+
 	devServer: {
 		contentBase: path.join(__dirname, 'dist'),
+		host: '0.0.0.0',
+		historyApiFallback: true,
+		index: 'index.html',
+		compress: true,
+		hot: true,
 		port: 9000,
 	},
-	plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: path.resolve(__dirname, 'src', 'index.html'),
+		}),
+	],
 
 	optimization: {
 		minimize: true,

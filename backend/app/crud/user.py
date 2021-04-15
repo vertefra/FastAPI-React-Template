@@ -40,7 +40,6 @@ class UserCRUD(CRUDBasic[User, SignupUser, UpdateUser]):
         )
 
         user_db = User(
-            name=user_in.name,
             email=user_in.email,
             username=user_in.username,
             hashed_password=hashed_password.decode("UTF-8"),
@@ -62,7 +61,7 @@ class UserCRUD(CRUDBasic[User, SignupUser, UpdateUser]):
 
     async def get(self, db: Session, *, user_in: LoginUser) -> User:
 
-        user_db = crud.user.get_by_username(db, username=user_in.username)
+        user_db = await crud.user.get_by_username(db, username=user_in.username)
 
         if not user_db:
             raise HTTPException(

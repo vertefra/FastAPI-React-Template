@@ -5,17 +5,16 @@ from pydantic import BaseModel
 
 
 class BaseUser(BaseModel):
-    name: Optional[str] = None
     username: Optional[str] = None
     hashed_password: Optional[str] = None
     email: Optional[str] = None
     is_admin: Optional[bool] = False
     is_active: Optional[bool] = True
     is_verified: Optional[bool] = False
+    token: Optional[str] = None
 
 
 class SignupUser(BaseUser):
-    name: str
     username: str
     email: str
     is_admin: Optional[bool] = False
@@ -39,7 +38,6 @@ class CreatedUser(BaseUser):
 
 
 class UpdateUser(BaseUser):
-    name: Optional[str] = None
     username: Optional[str] = None
     email: Optional[str] = None
     is_admin: Optional[bool] = False

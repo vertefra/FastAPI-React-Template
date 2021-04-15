@@ -34,7 +34,6 @@ async def get_users(
 @router.post("/signup", response_model=User, response_model_exclude_none=True)
 async def signup_user(
     db: Session = Depends(get_db),
-    portal: bool = Depends(is_portal),
     *,
     user_signup: SignupUser,
 ) -> Any:
@@ -45,7 +44,6 @@ async def signup_user(
 @router.post("/login", response_model=UserGET, response_model_exclude_none=True)
 async def login_user(
     db: Session = Depends(get_db),
-    portal: bool = Depends(is_portal),
     *,
     user_login: LoginUser,
 ) -> Any:
